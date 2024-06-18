@@ -1,1 +1,55 @@
+Borrower Management:
 
+Add new borrowers to the library system, including information like name,
+contact details, and membership ID.
+Update borrower information when required (e.g., contact details).
+Remove borrowers from the system if necessary.
+
+
+class Borrower:
+    def __init__(self, name, contact_details, membershipId):
+        self.name = name
+        self.contact_details = contact_details
+        self.membershipId = membershipId
+
+class Borrower_database:
+    def __init__(self):
+        self.borrowers = []  
+
+    def add_borrower(self, borrower):
+        self.borrowers.append(borrower)
+
+    def update_borrower(self, membershipId, new_details):
+        for borrower in self.borrowers:
+            if borrower.membershipId == membershipId:
+                borrower.contact_details = new_details
+                print(f"Borrower with MembershipId {membershipId} updated successfully.")
+                return
+        print(f"Borrower with MembershipId {membershipId} not found.")
+
+    def delete_borrower(self, membershipId):
+        for i, borrower in enumerate(self.borrowers):
+            if borrower.membershipId == membershipId:
+                del self.borrowers[i]
+                print(f"Borrower with MembershipId {membershipId} deleted successfully.")
+                return
+        print(f"Borrower with MembershipId {membershipId} not found.")
+
+
+my_library_borrowers = Borrower_database()
+
+
+borrower_1 = Borrower("Tanmahi", "9234432112", 5)
+borrower_2 = Borrower("Vahini","8357924680", 3)
+borrower_3 = Borrower("Umika","8468101357",15)
+borrower_4 = Borrower("Shouri","9067962295",25)
+borrower_5 = Borrower("Bhavya","7888981001",10)
+
+my_library_borrowers.add_borrower(borrower_1)
+my_library_borrowers.add_borrower(borrower_2)
+my_library_borrowers.add_borrower(borrower_3)
+my_library_borrowers.add_borrower(borrower_4)
+my_library_borrowers.add_borrower(borrower_5)
+
+my_library_borrowers.update_borrower(15, "7234568910")
+my_library_borrowers.delete_borrower(10)
