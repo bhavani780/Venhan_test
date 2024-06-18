@@ -14,8 +14,6 @@ class Book:
         self.genre = genre
         self.quantity = quantity  
 
-    def __str__(self):
-        return f"Title: {self.title}\nAuthor: {self.author}\nISBN: {self.isbn}\nGenre: {self.genre}\nQuantity: {self.quantity}"
 
 class Library_database:
     def __init__(self):
