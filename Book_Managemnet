@@ -1,1 +1,60 @@
+Book Management:
 
+Add new books to the library database with details like title, author, ISBN,
+genre, and quantity.
+Update existing book information (e.g., title, author, quantity) if needed.
+Remove books from the library database when they are no longer
+available.
+
+class Book:
+    def __init__(self, title, author, isbn, genre, quantity):
+        self.title = title
+        self.author = author
+        self.isbn = isbn
+        self.genre = genre
+        self.quantity = quantity  
+
+    def __str__(self):
+        return f"Title: {self.title}\nAuthor: {self.author}\nISBN: {self.isbn}\nGenre: {self.genre}\nQuantity: {self.quantity}"
+
+class Library_database:
+    def __init__(self):
+        self.books = []  
+
+    def add_book(self, book):
+        self.books.append(book)
+
+    def update_book(self, isbn, new_quantity):
+        for book in self.books:
+            if book.isbn == isbn:
+                book.quantity = new_quantity
+                print(f"Book with ISBN {isbn} updated successfully.")
+                return
+        print(f"Book with ISBN {isbn} not found.")
+
+    def delete_book(self, isbn):
+        for i, book in enumerate(self.books):
+            if book.isbn == isbn:
+                del self.books[i]
+                print(f"Book with ISBN {isbn} deleted successfully.")
+                return
+        print(f"Book with ISBN {isbn} not found.")
+
+
+my_library_books = Library_database()
+
+
+book_1 = Book("Philosopher's Stone", "Harry Potter", "1234432112","Fantasy", 5)
+book_2 = Book("The Magic of the Lost Temple", "Sudha Murthy", "1357924680","Fiction", 3)
+book_3 = Book("Wings Of Fire","A P J Abdul Kalam","2468101357","AutoBiography",15)
+book_4 = Book("Five Steps to Success","Yandamoori Veerendranath","4067962295","Motivational",25)
+book_5 = Book("Gitanjali","Rabindranath Tagore","4888981001","Novel",10)
+
+my_library_books.add_book(book_1)
+my_library_books.add_book(book_2)
+my_library_books.add_book(book_3)
+my_library_books.add_book(book_4)
+my_library_books.add_book(book_5)
+
+my_library_books.update_book("1234432112", 10)
+my_library_books.delete_book("4888981001")
