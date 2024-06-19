@@ -1,1 +1,47 @@
 
+
+
+class Book:
+    def __init__(self, title, author, genre):
+        self.title = title
+        self.author = author
+        self.genre = genre
+
+my_library_books = [
+    Book("Philosopher's Stone", "Harry Potter", "Fantasy"),
+    Book("Wings Of Fire", "A P J Abdul Kalam", "AutoBiography"),
+    Book("Geetanjali", "Rabindranath Tagore", "Novel"),
+    Book("The Magic of the Lost Temple", "Sudha Murthy", "Fiction"),
+    Book("Five Steps to Success", "Yandamoori Veerendranath", "Motivational"),
+    
+]
+
+def searching_by_title(title):
+    result = [book for book in my_library_books if title.lower() in book.title.lower()]
+    return result
+
+def searching_by_author(author):
+    result = [book for book in my_library_books if author.lower() in book.author.lower()]
+    return result
+
+def searching_by_genre(genre):
+    result = [book for book in my_library_books if genre.lower() in book.genre.lower()]
+    return result
+
+
+search_title_results = searching_by_title("Wings Of Fire")
+print("Books with 'Wings Of Fire' in the title:")
+for book in search_title_results:
+    print(f"{book.title} by {book.author}")
+
+
+search_author_results = searching_by_author("Harry Potter")
+print("\nBooks by 'Harry Potter':")
+for book in search_author_results:
+    print(f"{book.title} by {book.author}")
+
+
+search_genre_results = searching_by_genre("Novel")
+print("\nNovel Books:")
+for book in search_genre_results:
+    print(f"{book.title} by {book.author}")
