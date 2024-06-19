@@ -4,7 +4,6 @@ Book Search and Availability:
 genre.
 
 
-
 class Book:
     def __init__(self, title, author, genre):
         self.title = title
