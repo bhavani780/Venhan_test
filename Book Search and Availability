@@ -1,3 +1,7 @@
+Book Search and Availability:
+
+**Provide a search feature that enables users to find books by title, author, or
+genre.
 
 
 
@@ -39,6 +43,56 @@ search_author_results = searching_by_author("Harry Potter")
 print("\nBooks by 'Harry Potter':")
 for book in search_author_results:
     print(f"{book.title} by {book.author}")
+
+
+**Show the availability status (number of copies available) for each book in
+the search results.
+
+class Book:
+    def __init__(self, title, author, genre, no_of_copies):
+        self.title = title
+        self.author = author
+        self.genre = genre
+        self.no_of_copies = no_of_copies
+
+my_library_books = [
+    Book("Philosopher's Stone", "Harry Potter", "Fantasy", 10),
+    Book("Wings Of Fire", "A P J Abdul Kalam", "AutoBiography", 15),
+    Book("Geetanjali", "Rabindranath Tagore", "Novel",25),
+    Book("The Magic of the Lost Temple", "Sudha Murthy", "Fiction",20),
+    Book("Five Steps to Success", "Yandamoori Veerendranath", "Motivational",17),
+    
+]
+
+def searching_by_title(title):
+    result = [(book, book.no_of_copies) for book in my_library_books if title.lower() in book.title.lower()]
+    return result
+
+def searching_by_author(author):
+    result = [(book, book.no_of_copies) for book in my_library_books if author.lower() in book.author.lower()]
+    return result
+
+def searching_by_genre(genre):
+    result = [(book, book.no_of_copies) for book in my_library_books if genre.lower() in book.genre.lower()]
+    return result
+
+
+search_title_results = searching_by_title("Wings Of Fire")
+print("Books with 'Wings Of Fire' in the title:")
+for book,no_of_copies in search_title_results:
+    print(f"{book.title} by {book.author} : Number of Books- {no_of_copies}")
+
+
+search_author_results = searching_by_author("Harry Potter")
+print("\nBooks by 'Harry Potter':")
+for book,no_of_copies in search_author_results:
+    print(f"{book.title} by {book.author} : Number of Books - {no_of_copies}")
+
+
+search_genre_results = searching_by_genre("Novel")
+print("\nNovel Books:")
+for book,no_of_copies in search_genre_results:
+    print(f"{book.title} by {book.author}: Number of Books - {no_of_copies}")
 
 
 search_genre_results = searching_by_genre("Novel")
